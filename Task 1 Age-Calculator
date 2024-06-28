@@ -1,0 +1,142 @@
+                //                Html File
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1 Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="age-container">
+        <div class="age-header"  >
+            <span> Age Calculator</span> 
+        </div>
+        <div class="age-input">
+            <label>Please select your Birth Date:</label>
+            <input type="date" class="age-dob-input">
+        </div>
+
+        <div class="age-button">
+            <button class="calculate-button">
+                <span>Calculate Age</span>
+            </button>
+        </div>
+
+        <div class="age-result">
+            Your age is: 
+        </div>
+    </div>
+
+    <script
+    src="script.js"
+    >
+        
+    </script>
+</body>
+</html>
+
+                //                Css File
+
+*{padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family:'poppins',sans-serif}
+body{
+    background:linear-gradient(100deg,#3b137c,#6589c7);
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.age-container{
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    padding: 30px;
+    width: 500px;
+    height: 250px;
+    text-align: center;
+    box-shadow: 0 0 12px 0 rgb(240, 243, 89);
+}
+
+.age-header{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.age-header span{
+    color: #f3f337;
+}
+
+label{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: block;
+    color:white;
+}
+
+.age-dob-input{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.calculate-button{
+    font-size: 1.2rem;
+    width: 200px;
+    height: 40px;
+    background-color: #f3f337;
+    color: black;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.age-result{
+    color: white;
+    font-size: 1.2rem;
+}
+
+                //                Javascript File
+
+// userInput.max = new Date().toISOString().split("T")[0]
+
+const inputButton=document.querySelector(".age-dob-input")
+
+const calculateButton=document.querySelector(".calculate-button")
+
+const ageResult=document.querySelector(".age-result")
+
+calculateButton.addEventListener("click",()=>{
+
+    if(inputButton.value===""){
+        alert("Please enter your date of birth")
+    }else{
+        console.log("input",inputButton.value);
+        const dob=new Date(inputButton.value)
+        console.log("dob",dob)
+        const dobYear=dob.getFullYear();
+        console.log("dobYear",dobYear)
+
+        // for Current
+        const now=new Date()
+        console.log("now",now)
+
+        const nowYear=now.getFullYear()
+        console.log("nowYear",nowYear)
+        const age=nowYear-dobYear
+        console.log("age",age)
+
+        ageResult.innerHTML= `Your age is: ${age}`
+    }
+})
+
+
